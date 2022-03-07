@@ -12,6 +12,9 @@ const Pokecard = styled.div`
   border: 1px solid black;
   margin: 10px;
   padding: 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
 `;
 
 const Home = () => {
@@ -29,11 +32,22 @@ const Home = () => {
       });
   }, []);
 
+  const buildImgUrl = (url) => {
+    const id = url.split("/");
+    const idx = id.length - 2;
+    const imgUrl = `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${id[idx]}.png`;
+
+    return imgUrl;
+    };
+
   return (
     <PokecardContainer>
       {pokemonlist.map((pokemon) => (
         <Pokecard key={pokemon.name}>
             <h2>{pokemon.name}</h2>
+            <img src={buildImgUrl(pokemon.url)} alt={pokemon.name} />
+              <button>Adicionar a pokedex</button>
+              <button>Ver detalhes</button>
           
         </Pokecard>
       ))}
