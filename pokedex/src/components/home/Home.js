@@ -27,6 +27,7 @@ const Home = () => {
       .then((res) => {
         setPokemonlist(res.data.results);
         console.log(res.data.results)
+        console.log(pokemon)
       })
       .catch((err) => {
         console.log(err);
