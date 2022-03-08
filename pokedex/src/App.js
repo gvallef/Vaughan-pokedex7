@@ -1,6 +1,7 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import './App.css';
 import Home from './components/home/Home';
+
 import PokemonDetails from './components/PokemonDetails/PokemonDetails'
 
 function App() {
@@ -12,6 +13,7 @@ function App() {
       </Routes>
     </BrowserRouter>
     
+
   );
 }
 
