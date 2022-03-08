@@ -2,6 +2,7 @@ import React from "react";
 import { useEffect, useState } from "react";
 import axios from "axios";
 import styled from "styled-components";
+import {Link} from 'react-router-dom'
 
 const PokecardContainer = styled.div`
   display: grid;
@@ -14,7 +15,6 @@ const Pokecard = styled.div`
   padding: 10px;
   display: flex;
   flex-direction: column;
-  align-items: center;
   gap: 10px;
 `;
 
@@ -40,17 +40,27 @@ const Home = () => {
 
     return imgUrl;
     };
+  
+    const getPokemonId = (url) => {
+      const id = url.split("/");
+      const idx = id.length - 2;
+      const pokemonId = id[idx];
+      return pokemonId;
+    };
+
 
   return (
+    
     <PokecardContainer>
-      {pokemonlist.map((pokemon) => (
+      {pokemonlist.map((pokemon) => ( 
+        <Link to={`/details/${getPokemonId(pokemon.url)}`}>     
         <Pokecard key={pokemon.name}>
             <h2>{pokemon.name}</h2>
             <img src={buildImgUrl(pokemon.url)} alt={pokemon.name} />
               <button>Adicionar a pokedex</button>
-              <button>Ver detalhes</button>
-          
+              <button>Ver detalhes</button>              
         </Pokecard>
+        </Link>
       ))}
     </PokecardContainer>
   );
