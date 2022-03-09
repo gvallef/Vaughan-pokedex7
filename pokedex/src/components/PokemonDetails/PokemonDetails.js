@@ -13,6 +13,7 @@ const Root = styled.div`
 
 const InfoCard = styled.div`
     display: flex;
+    flex-direction: column;
     border: 1px solid black;
 `
 
@@ -20,13 +21,6 @@ const PokemonDetails = () => {
     const {id} = useParams() 
     const [pokemons, setPokemons] = useState([])
 
-    const buildImgUrl = (url) => {
-        const id = url.split("/");
-        const idx = id.length - 2;
-        const imgUrl = `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${id[idx]}.png`;
-    
-        return imgUrl;
-        };
     
     useEffect (() => {
         axios
@@ -38,22 +32,85 @@ const PokemonDetails = () => {
             .catch((err) => {
                 console.log(err);
             });
-    }, []) 
+    }, []);
+    
+    const backgroundType = (type) => {
+        switch (type) {
+            case "normal":
+                return "lightblue";
+            case "fighting":
+                return "red";
+            case "flying":
+                return "lightblue";
+            case "poison":
+                return "purple";
+            case "ground":
+                return "brown";
+            case "rock":
+                return "brown";
+            case "bug":
+                return "green";
+            case "ghost":
+                return "purple";
+            case "steel":
+                return "grey";
+            case "fire":
+                return "red";
+            case "water":
+                return "blue";
+            case "grass":
+                return "green";
+            case "electric":
+                return "yellow";
+            case "psychic":
+                return "pink";
+            case "ice":
+                return "lightblue";
+            case "dragon":
+                return "purple";
+            case "dark":
+                return "purple";
+            case "fairy":
+                return "pink";
+            default:
+                return "black";
+        }
+    }
 
     const pokemap = pokemons.map((poke) => (
-        <Root>       
+        <Root key={poke.name} style={{
+            backgroundColor: backgroundType(poke.types[0].type.name),
+            color: "white",
+          }}>  
+           
 
-         <InfoCard>            
+         <InfoCard >            
          <img src={poke.sprites.front_default}/>
          </InfoCard>
          <InfoCard>
              status
+             {/* show pokemon stats */}
+             <p>{poke.stats[0].base_stat}</p>
          </InfoCard>
          <InfoCard>
-             tipo
+             <p>Número de tipos: {poke.types.length}</p>
+               
+                <p>Tipo 1: {poke.types[0].type.name}</p>
+                <p>Tipo 2: {poke.types[1] ? poke.types[1].type.name : 'N/A'}</p>
+                
+
+
          </InfoCard>
          <InfoCard>
              movimentos
+                {/* show pokemon moves */}
+                <p>{poke.moves[0].move.name}</p>
+                <p>{poke.moves[1] ? poke.moves[1].move.name : 'N/A'}</p>
+                <p>{poke.moves[2] ? poke.moves[2].move.name : 'N/A'}</p>
+                <p>{poke.moves[3] ? poke.moves[3].move.name : 'N/A'}</p>
+                <p>{poke.moves[4] ? poke.moves[4].move.name : 'N/A'}</p>
+                
+
          </InfoCard>
          <InfoCard>
           <img src={poke.sprites.back_default} />

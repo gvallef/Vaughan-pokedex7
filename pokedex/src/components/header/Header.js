@@ -1,8 +1,12 @@
 import React from "react";
 import styled from 'styled-components';
+import Button from '@material-ui/core/Button';
+import {Link} from 'react-router-dom';
+
 
 const HeaderContainer = styled.div`
     display: flex;
+    flex-direction: row;
     justify-content: flex-start; 
     padding: 10px;
     background-color: cornflowerblue;
@@ -12,8 +16,15 @@ const HeaderContainer = styled.div`
 const Header = () => {
     return (
         <HeaderContainer>
-            <button>Ir para pokedex</button>
-            <h1>Pokedex</h1>
+            <Link to="/">
+            <Button variant="contained" color="primary">
+                Pokemon List
+            </Button>
+            </Link>
+
+            <Link to="/pokedex">
+                Pokedex
+            </Link>
         </HeaderContainer>
     );
 };

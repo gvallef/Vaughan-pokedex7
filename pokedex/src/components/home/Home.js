@@ -1,8 +1,8 @@
 import React from "react";
-import { useEffect, useState } from "react";
-import axios from "axios";
 import styled from "styled-components";
 import {Link} from 'react-router-dom'
+
+
 
 const PokecardContainer = styled.div`
   display: grid;
@@ -10,6 +10,9 @@ const PokecardContainer = styled.div`
 `;
 
 const Pokecard = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   border: 1px solid black;
   margin: 10px;
   padding: 10px;
@@ -18,50 +21,24 @@ const Pokecard = styled.div`
   gap: 10px;
 `;
 
-const Home = () => {
-  const [pokemonlist, setPokemonlist] = useState([]);
-
-  useEffect(() => {
-    axios
-      .get("https://pokeapi.co/api/v2/pokemon")
-      .then((res) => {
-        setPokemonlist(res.data.results);
-        console.log(res.data.results)
-      })
-      .catch((err) => {
-        console.log(err);
-      });
-  }, []);
-
-  const buildImgUrl = (url) => {
-    const id = url.split("/");
-    const idx = id.length - 2;
-    const imgUrl = `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${id[idx]}.png`;
-
-    return imgUrl;
-    };
-  
-    const getPokemonId = (url) => {
-      const id = url.split("/");
-      const idx = id.length - 2;
-      const pokemonId = id[idx];
-      return pokemonId;
-    };
+const Home = (props) => {
 
 
   return (
     
     <PokecardContainer>
-      {pokemonlist.map((pokemon) => ( 
-        <Link to={`/details/${getPokemonId(pokemon.url)}`}>     
+      {props.pokemonlist.map((pokemon) => ( 
+             
         <Pokecard key={pokemon.name}>
             <h2>{pokemon.name}</h2>
-            <img src={buildImgUrl(pokemon.url)} alt={pokemon.name} />
-              <button>Adicionar a pokedex</button>
+            <img src={props.buildImgUrl(pokemon.url)} alt={pokemon.name} />
+              <button onClick={ () => props.addToPokedex(pokemon)}>Adicionar a pokedex</button>
+              <Link to={`/details/${props.getPokemonId(pokemon.url)}`}>
               <button>Ver detalhes</button>              
+              </Link>
         </Pokecard>
-        </Link>
       ))}
+
     </PokecardContainer>
   );
 };

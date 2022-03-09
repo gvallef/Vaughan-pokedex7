@@ -1,18 +1,21 @@
 import React from "react";
-import Pokedexbackground from "../../assets/pokedexbackground.png";
 import styled from 'styled-components';
 
+
 const PokedexBackground = styled.div`
-    background-image : url(${Pokedexbackground});
-    background-size: cover;
-    background-repeat: no-repeat;
-    background-position: center;
-    height: 150vh;
     `;
 
-const Pokedex = () => {
+const Pokedex = (props) => {
+
     return (
         <PokedexBackground>
+            {props.pokedex.map((pokemon) => (
+                <div key={pokemon.name}>
+                    <h2>{pokemon.name}</h2>
+                    <img src={props.buildImgUrl(pokemon.url)} alt={pokemon.name} />
+                    
+                </div>
+            ))}
             
         </PokedexBackground>
     );
