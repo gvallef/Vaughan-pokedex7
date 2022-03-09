@@ -54,14 +54,16 @@ const Home = () => {
     
     <PokecardContainer>
       {pokemonlist.map((pokemon) => ( 
-        <Link to={`/details/${getPokemonId(pokemon.url)}`}>     
+            
         <Pokecard key={pokemon.name}>
             <h2>{pokemon.name}</h2>
             <img src={buildImgUrl(pokemon.url)} alt={pokemon.name} />
               <button>Adicionar a pokedex</button>
-              <button>Ver detalhes</button>              
+              <Link to={`/details/${getPokemonId(pokemon.url)}`}>  
+              <button>Ver detalhes</button>  </Link>
+                        
         </Pokecard>
-        </Link>
+        
       ))}
     </PokecardContainer>
   );

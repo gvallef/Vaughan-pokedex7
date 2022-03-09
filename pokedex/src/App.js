@@ -3,6 +3,8 @@ import './App.css';
 import Home from './components/home/Home';
 import PokemonDetails from './components/PokemonDetails/PokemonDetails'
 import Header from './components/header/Header';
+import Pokedex from './components/pokedex/Pokedex';
+
 
 
 function App() {
@@ -11,8 +13,11 @@ function App() {
       <Header />
 
       <Routes>
+
         <Route path = "/" element = {<Home />} />          
-        <Route path = "/details/:id" element = {<PokemonDetails />} />          
+        <Route path = "/details/:id" element = {<PokemonDetails />} />    
+        <Route path = "/pokedex" element = {<Pokedex />} />      
+        
       </Routes>
     </BrowserRouter>
     
@@ -21,4 +26,3 @@ function App() {
 
 export default App;
 
-// Testando o Git.

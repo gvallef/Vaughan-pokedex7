@@ -13,47 +13,93 @@ const Root = styled.div`
 
 const InfoCard = styled.div`
     display: flex;
+    flex-direction: column ;
     border: 1px solid black;
 `
 
 const PokemonDetails = () => {
     const {id} = useParams() 
     const [pokemons, setPokemons] = useState([])
+    
 
-    const buildImgUrl = (url) => {
-        const id = url.split("/");
-        const idx = id.length - 2;
-        const imgUrl = `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${id[idx]}.png`;
-    
-        return imgUrl;
-        };
-    
+        
     useEffect (() => {
         axios
             .get(`https://pokeapi.co/api/v2/pokemon/${id}`)
             .then((res) => {
                 setPokemons([res.data]);
-                console.log(pokemons)
+               
+                
             })
             .catch((err) => {
                 console.log(err);
             });
+        
+            
     }, []) 
 
+
+
     const pokemap = pokemons.map((poke) => (
+
         <Root>       
 
          <InfoCard>            
          <img src={poke.sprites.front_default}/>
          </InfoCard>
          <InfoCard>
-             status
+             
+             <h3> Status:  </h3>
+             <p>
+               HP: {poke.stats[0].base_stat} 
+            </p>
+            <p>
+               attack: {poke.stats[1].base_stat} 
+            </p>
+            <p>
+               defense: {poke.stats[2].base_stat} 
+            </p>
+            <p>
+               special-attack: {poke.stats[3].base_stat} 
+            </p>
+            <p>
+               special-defense: {poke.stats[4].base_stat} 
+            </p>
+            <p>
+               speed: {poke.stats[5].base_stat} 
+            </p>
+            
+          
+          
          </InfoCard>
          <InfoCard>
-             tipo
+            <h3> Type</h3>
+            <p>
+               type 1: {poke.types[0].type.name} 
+            </p>
+            <p>
+               type 2:  {poke.types[1] ? poke.types[1].type.name : 'N/A'} 
+            </p>
+
          </InfoCard>
          <InfoCard>
-             movimentos
+         <h3> Moves</h3>
+         <p>
+               move name 1: {poke.moves[0].move.name} 
+        </p>
+        <p>
+               move name 2: {poke.moves[1].move.name} 
+        </p>
+        <p>
+               move name 3: {poke.moves[2].move.name} 
+        </p>
+        <p>
+               move name 4: {poke.moves[3].move.name} 
+        </p>
+        <p>
+               move name 5: {poke.moves[4].move.name} 
+        </p>
+
          </InfoCard>
          <InfoCard>
           <img src={poke.sprites.back_default} />
@@ -64,6 +110,8 @@ const PokemonDetails = () => {
    
 
     return(
+        console.log(pokemons),
+        
         <>
         {pokemap}
         </>
