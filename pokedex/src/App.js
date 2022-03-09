@@ -53,6 +53,11 @@ function App() {
       setPokedex([...pokedex, pokemon])
     };
 
+    const removeFromPokedex = (pokemon) => {
+      const newPokedex = pokedex.filter(p => p.name !== pokemon.name);
+      setPokedex(newPokedex);
+    };
+
     console.log(pokedex)
   return (
     
@@ -65,7 +70,10 @@ function App() {
         getPokemonId={getPokemonId}
         addToPokedex={addToPokedex}
          />} />
-        <Route path = "/pokedex" element = {<Pokedex buildImgUrl={buildImgUrl} pokedex={pokedex} />} />          
+        <Route path = "/pokedex" element = {<Pokedex 
+        buildImgUrl={buildImgUrl} 
+        pokedex={pokedex}
+        removeFromPokedex={removeFromPokedex} />} />          
         <Route path = "/details/:id" element = {<PokemonDetails />} />          
       </Routes>
     </BrowserRouter>
