@@ -27,7 +27,7 @@ const PokemonDetails = () => {
             .get(`https://pokeapi.co/api/v2/pokemon/${id}`)
             .then((res) => {
                 setPokemons([res.data]);
-                console.log(pokemons)
+                
             })
             .catch((err) => {
                 console.log(err);

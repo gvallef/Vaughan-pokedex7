@@ -26,8 +26,6 @@ function App() {
       .get(`https://pokeapi.co/api/v2/pokemon?limit=${limit}`)
       .then((res) => {
         setPokemonlist(res.data.results);
-        console.log(res.data.results)
-        
       })
       .catch((err) => {
         console.log(err);
@@ -51,14 +49,17 @@ function App() {
 
     const addToPokedex = (pokemon) => {
       setPokedex([...pokedex, pokemon])
+      const newPokemonList = pokemonlist.filter(p => p.name !== pokemon.name);
+      setPokemonlist(newPokemonList);
     };
 
     const removeFromPokedex = (pokemon) => {
       const newPokedex = pokedex.filter(p => p.name !== pokemon.name);
       setPokedex(newPokedex);
+      const newPokemonList = [...pokemonlist, pokemon];
+      setPokemonlist(newPokemonList);
     };
 
-    console.log(pokedex)
   return (
     
     <BrowserRouter>
@@ -73,7 +74,8 @@ function App() {
         <Route path = "/pokedex" element = {<Pokedex 
         buildImgUrl={buildImgUrl} 
         pokedex={pokedex}
-        removeFromPokedex={removeFromPokedex} />} />          
+        removeFromPokedex={removeFromPokedex}
+        pokemonlist={pokemonlist} />} />          
         <Route path = "/details/:id" element = {<PokemonDetails />} />          
       </Routes>
     </BrowserRouter>
