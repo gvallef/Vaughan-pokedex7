@@ -1,9 +1,10 @@
 # POKEDEX
 
 Nome dos integrantes: 
-- Pessoa 1
-- Pessoa 2
-- Pessoa 3
+- Filipe
+- Jardel
+- Anderson
+- Gabriel
 
 Link do Surge: www.link.com.br
 
