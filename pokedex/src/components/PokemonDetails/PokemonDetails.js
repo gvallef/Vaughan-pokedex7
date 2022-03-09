@@ -13,92 +13,103 @@ const Root = styled.div`
 
 const InfoCard = styled.div`
     display: flex;
-    flex-direction: column ;
+    flex-direction: column;
     border: 1px solid black;
 `
 
 const PokemonDetails = () => {
     const {id} = useParams() 
     const [pokemons, setPokemons] = useState([])
-    
 
-        
+    
     useEffect (() => {
         axios
             .get(`https://pokeapi.co/api/v2/pokemon/${id}`)
             .then((res) => {
                 setPokemons([res.data]);
-               
-                
+                console.log(pokemons)
             })
             .catch((err) => {
                 console.log(err);
             });
-        
-            
-    }, []) 
-
-
+    }, []);
+    
+    const backgroundType = (type) => {
+        switch (type) {
+            case "normal":
+                return "lightblue";
+            case "fighting":
+                return "red";
+            case "flying":
+                return "lightblue";
+            case "poison":
+                return "purple";
+            case "ground":
+                return "brown";
+            case "rock":
+                return "brown";
+            case "bug":
+                return "green";
+            case "ghost":
+                return "purple";
+            case "steel":
+                return "grey";
+            case "fire":
+                return "red";
+            case "water":
+                return "blue";
+            case "grass":
+                return "green";
+            case "electric":
+                return "yellow";
+            case "psychic":
+                return "pink";
+            case "ice":
+                return "lightblue";
+            case "dragon":
+                return "purple";
+            case "dark":
+                return "purple";
+            case "fairy":
+                return "pink";
+            default:
+                return "black";
+        }
+    }
 
     const pokemap = pokemons.map((poke) => (
+        <Root key={poke.name} style={{
+            backgroundColor: backgroundType(poke.types[0].type.name),
+            color: "white",
+          }}>  
+           
 
-        <Root>       
-
-         <InfoCard>            
+         <InfoCard >            
          <img src={poke.sprites.front_default}/>
          </InfoCard>
          <InfoCard>
-             
-             <h3> Status:  </h3>
-             <p>
-               HP: {poke.stats[0].base_stat} 
-            </p>
-            <p>
-               attack: {poke.stats[1].base_stat} 
-            </p>
-            <p>
-               defense: {poke.stats[2].base_stat} 
-            </p>
-            <p>
-               special-attack: {poke.stats[3].base_stat} 
-            </p>
-            <p>
-               special-defense: {poke.stats[4].base_stat} 
-            </p>
-            <p>
-               speed: {poke.stats[5].base_stat} 
-            </p>
-            
-          
-          
+             status
+             {/* show pokemon stats */}
+             <p>{poke.stats[0].base_stat}</p>
          </InfoCard>
          <InfoCard>
-            <h3> Type</h3>
-            <p>
-               type 1: {poke.types[0].type.name} 
-            </p>
-            <p>
-               type 2:  {poke.types[1] ? poke.types[1].type.name : 'N/A'} 
-            </p>
+             <p>Número de tipos: {poke.types.length}</p>
+               
+                <p>Tipo 1: {poke.types[0].type.name}</p>
+                <p>Tipo 2: {poke.types[1] ? poke.types[1].type.name : 'N/A'}</p>
+                
+
 
          </InfoCard>
          <InfoCard>
-         <h3> Moves</h3>
-         <p>
-               move name 1: {poke.moves[0].move.name} 
-        </p>
-        <p>
-               move name 2: {poke.moves[1].move.name} 
-        </p>
-        <p>
-               move name 3: {poke.moves[2].move.name} 
-        </p>
-        <p>
-               move name 4: {poke.moves[3].move.name} 
-        </p>
-        <p>
-               move name 5: {poke.moves[4].move.name} 
-        </p>
+             movimentos
+                {/* show pokemon moves */}
+                <p>{poke.moves[0].move.name}</p>
+                <p>{poke.moves[1] ? poke.moves[1].move.name : 'N/A'}</p>
+                <p>{poke.moves[2] ? poke.moves[2].move.name : 'N/A'}</p>
+                <p>{poke.moves[3] ? poke.moves[3].move.name : 'N/A'}</p>
+                <p>{poke.moves[4] ? poke.moves[4].move.name : 'N/A'}</p>
+                
 
          </InfoCard>
          <InfoCard>
@@ -110,8 +121,6 @@ const PokemonDetails = () => {
    
 
     return(
-        console.log(pokemons),
-        
         <>
         {pokemap}
         </>

@@ -7,12 +7,11 @@ import {Link} from 'react-router-dom';
 const HeaderContainer = styled.div`
     display: flex;
     flex-direction: row;
-    justify-content: flex-start;
+    justify-content: flex-start; 
     padding: 10px;
     background-color: cornflowerblue;
     gap: 50px;
 `;
-
 
 const Header = () => {
     return (
@@ -22,13 +21,12 @@ const Header = () => {
                 Pokemon List
             </Button>
             </Link>
+
             <Link to="/pokedex">
                 Pokedex
             </Link>
         </HeaderContainer>
     );
 };
-
-
 
 export default Header;

@@ -1,8 +1,8 @@
 import React from "react";
-import { useEffect, useState } from "react";
-import axios from "axios";
 import styled from "styled-components";
 import {Link} from 'react-router-dom'
+
+
 
 const PokecardContainer = styled.div`
   display: grid;
@@ -10,6 +10,9 @@ const PokecardContainer = styled.div`
 `;
 
 const Pokecard = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   border: 1px solid black;
   margin: 10px;
   padding: 10px;
@@ -19,28 +22,25 @@ const Pokecard = styled.div`
 `;
 
 const Home = (props) => {
-  
 
 
   return (
     
     <PokecardContainer>
       {props.pokemonlist.map((pokemon) => ( 
-            
+             
         <Pokecard key={pokemon.name}>
             <h2>{pokemon.name}</h2>
             <img src={props.buildImgUrl(pokemon.url)} alt={pokemon.name} />
-              <button>Adicionar a pokedex</button>
-              <Link to={`/details/${props.getPokemonId(pokemon.url)}`}>  
-              <button>Ver detalhes</button>  </Link>
-                        
+              <button onClick={ () => props.addToPokedex(pokemon)}>Adicionar a pokedex</button>
+              <Link to={`/details/${props.getPokemonId(pokemon.url)}`}>
+              <button>Ver detalhes</button>              
+              </Link>
         </Pokecard>
-        
       ))}
+
     </PokecardContainer>
   );
 };
 
 export default Home;
-
-//Teste Git
