@@ -6,7 +6,7 @@ import {Link} from 'react-router-dom'
 
 const PokecardContainer = styled.div`
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
   grid-gap: 10px;
   margin: 10px;
 `;
@@ -39,6 +39,7 @@ const Home = (props) => {
           flexDirection: "column",
           alignItems: "center",
           justifyContent: "center",
+          fontSize: "10px",
         }}>
             <h2>{pokemon.name}</h2>
             <PokeImage>

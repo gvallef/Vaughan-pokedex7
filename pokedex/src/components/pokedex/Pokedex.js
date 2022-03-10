@@ -1,50 +1,71 @@
-import {React, useState} from "react";
+import { React, useState } from "react";
+import { Link } from "react-router-dom";
 import styled from "styled-components";
-import './pokedex.css';
-import "nes.css/css/nes.min.css"
+import "./pokedex.css";
+import "nes.css/css/nes.min.css";
 
 const PokedexBackground = styled.div`
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
-    grid-gap: 10px;
-    margin: 10px;
-    `;
-
-const PokeCardContainer = styled.div`
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    padding: 10px;
-    max-width: 120px;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  grid-gap: 10px;
+  margin: 10px;
 `;
 
 const PokeImage = styled.div`
-    background-color: cornflowerblue;
-    border-radius: 50%;
-    margin: 10px;
-    `;
+  background-color: #f5f5f5;
+  border: 1px solid black;
+  border-radius: 50%;
+  margin: 10px;
+`;
 
+const CardButtons = styled.div`
+  display: flex;
+  flex-direction: row;
+  gap: 5px;
+`;
 
 const Pokedex = (props) => {
-
   return (
     <PokedexBackground>
-        
       {props.pokedex.map((pokemon) => (
-         
-                     <div class="nes-container is-rounded">
-                <PokeCardContainer key={pokemon.id}>
-                    <h2>{pokemon.name}</h2>
-                    <PokeImage>
-                    <img src={props.buildImgUrl(pokemon.url)} alt={pokemon.name} />
-                    </PokeImage>
-                    <button type="button" class="nes-btn is-error" onClick={ () => props.removeFromPokedex(pokemon)}>Remover</button>
-                </PokeCardContainer>
-                    </div>
-            ))}
-        
-      
+        <div
+          key={pokemon.id}
+          class="nes-container is-rounded"
+          style={{
+            backgroundColor: "#F7DE3F",
+            color: "#3860BE",
+            display: "flex",
+            flexDirection: "column",
+            alignItems: "center",
+            justifyContent: "center",
+            fontSize: "10px",
+          }}
+        >
+          <h2>{pokemon.name}</h2>
+          <PokeImage>
+            <img src={props.buildImgUrl(pokemon.url)} alt={pokemon.name} />
+          </PokeImage>
+          <CardButtons>
+            <button
+              style={{ height: "30px", padding: "0px" }}
+              type="button"
+              class="nes-btn is-error"
+              onClick={() => props.removeFromPokedex(pokemon)}
+            >
+              Remover
+            </button>
+            <Link to={`/details/${props.getPokemonId(pokemon.url)}`}>
+              <button
+                type="button"
+                class="nes-btn is-primary"
+                style={{ height: "30px", padding: "0px" }}
+              >
+                Detalhes
+              </button>
+            </Link>
+          </CardButtons>
+        </div>
+      ))}
     </PokedexBackground>
   );
 };
