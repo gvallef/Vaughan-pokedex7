@@ -25,6 +25,7 @@ const CardButtons = styled.div`
     `;
 
 const Home = (props) => {
+  
 
 
   return (
