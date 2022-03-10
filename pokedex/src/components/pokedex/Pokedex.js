@@ -1,5 +1,6 @@
 import React from "react";
 import styled from 'styled-components';
+import "nes.css/css/nes.min.css"
 
 
 const PokedexBackground = styled.div`
