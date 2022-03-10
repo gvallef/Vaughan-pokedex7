@@ -21,7 +21,9 @@ const Header = () => {
             </>
             <Link to="/pokedex">
 
+
             <Button>
+
                 Pokedex
             </Button>
             </Link>
