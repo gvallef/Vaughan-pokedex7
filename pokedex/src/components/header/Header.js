@@ -1,32 +1,29 @@
 import React from "react";
 import styled from 'styled-components';
-import Button from '@material-ui/core/Button';
 import {Link} from 'react-router-dom';
+import { HeaderContainer, Button } from "./styled";
+import image from "../../media/pokedeximagem.png"
 
 
-const HeaderContainer = styled.div`
-    display: flex;
-    flex-direction: row;
-    justify-content: flex-start; 
-    padding: 10px;
-    background-color: cornflowerblue;
-    gap: 50px;
-`;
+
 
 const Header = () => {
     return (
         <HeaderContainer>
             <Link to="/">
-            <Button variant="contained" color="primary">
+            <Button >
                 Pokemon List
             </Button>
-            </Link>
 
+            </Link>
+            <>
+            <img height="60px" src={image}/>
+            </>
             <Link to="/pokedex">
-            <Button variant="contained" style={{
-            backgroundColor:"red",
-            color: "white",
-             }}>
+
+
+            <Button>
+
                 Pokedex
             </Button>
             </Link>
