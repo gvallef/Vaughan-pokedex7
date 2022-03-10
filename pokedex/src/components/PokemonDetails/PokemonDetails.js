@@ -9,12 +9,17 @@ const Root = styled.div`
     border: 1px solid black;
     grid-template-columns: 1fr 1fr 1fr 1fr;
     grid-template-rows: 1fr 1fr 1fr 1fr;
+    margin: 40px;
+    gap: 80px;
 `
 
 const InfoCard = styled.div`
     display: flex;
     flex-direction: column;
     border: 1px solid black;
+`
+
+const ImagemPokemon = styled.img`
 `
 
 const PokemonDetails = () => {
@@ -78,21 +83,32 @@ const PokemonDetails = () => {
     }
 
     const pokemap = pokemons.map((poke) => (
-        <Root key={poke.name} style={{
-            backgroundColor: backgroundType(poke.types[0].type.name),
-            color: "white",
-          }}>  
+        <Root >  
            
 
-         <InfoCard >            
+         <InfoCard key={poke.name} style={{
+            backgroundColor: backgroundType(poke.types[0].type.name),
+            color: "white",
+          }}>            
          <img src={poke.sprites.front_default}/>
          </InfoCard>
-         <InfoCard>
-             status
+         <InfoCard key={poke.name} style={{
+            backgroundColor: backgroundType(poke.types[0].type.name),
+            color: "white",
+          }}>
+             <h3>Status</h3>
              {/* show pokemon stats */}
-             <p>{poke.stats[0].base_stat}</p>
+             <p>HP: {poke.stats[0].base_stat}</p>
+             <p>Attack: {poke.stats[1].base_stat}</p>
+             <p>Defense: {poke.stats[2].base_stat}</p>
+             <p>Special-attack: {poke.stats[3].base_stat}</p>
+             <p>Special-defense: {poke.stats[4].base_stat}</p>
+             <p>Speed: {poke.stats[5].base_stat}</p>
          </InfoCard>
-         <InfoCard>
+         <InfoCard key={poke.name} style={{
+            backgroundColor: backgroundType(poke.types[0].type.name),
+            color: "white",
+          }}>
              <p>Número de tipos: {poke.types.length}</p>
                
                 <p>Tipo 1: {poke.types[0].type.name}</p>
@@ -101,7 +117,10 @@ const PokemonDetails = () => {
 
 
          </InfoCard>
-         <InfoCard>
+         <InfoCard key={poke.name} style={{
+            backgroundColor: backgroundType(poke.types[0].type.name),
+            color: "white",
+          }}>
              movimentos
                 {/* show pokemon moves */}
                 <p>{poke.moves[0].move.name}</p>
@@ -112,7 +131,10 @@ const PokemonDetails = () => {
                 
 
          </InfoCard>
-         <InfoCard>
+         <InfoCard key={poke.name} style={{
+            backgroundColor: backgroundType(poke.types[0].type.name),
+            color: "white",
+          }}>
           <img src={poke.sprites.back_default} />
          </InfoCard>
                                          
@@ -121,6 +143,7 @@ const PokemonDetails = () => {
    
 
     return(
+        console.log('Pokemons: ', pokemons),
         <>
         {pokemap}
         </>
