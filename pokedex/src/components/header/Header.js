@@ -23,7 +23,12 @@ const Header = () => {
             </Link>
 
             <Link to="/pokedex">
+            <Button variant="contained" style={{
+            backgroundColor:"red",
+            color: "white",
+             }}>
                 Pokedex
+            </Button>
             </Link>
         </HeaderContainer>
     );
