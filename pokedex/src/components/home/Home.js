@@ -1,6 +1,7 @@
-import React from "react";
+import React, { useContext } from "react";
 import styled from "styled-components";
 import {Link} from 'react-router-dom'
+import { GlobalContext } from "../../App";
 
 
 
@@ -26,12 +27,12 @@ const CardButtons = styled.div`
 
 const Home = (props) => {
   
-
+  const {pokemonlist} = useContext(GlobalContext)
 
   return (
     
     <PokecardContainer>
-      {props.pokemonlist.map((pokemon) => ( 
+      {pokemonlist.map((pokemon) => ( 
              
         <div class="nes-container is-rounded" key={pokemon.name} style={{
           backgroundColor: "#F7DE3F",
