@@ -14,7 +14,7 @@ function App() {
   const [pokedex, setPokedex] = useState([]);
   
 
-  let limit = 10;
+  let limit = 151;
   
 
   useEffect(() => {
@@ -75,7 +75,8 @@ function App() {
         buildImgUrl={buildImgUrl} 
         pokedex={pokedex}
         removeFromPokedex={removeFromPokedex}
-        pokemonlist={pokemonlist} />} />          
+        pokemonlist={pokemonlist}
+        getPokemonId={getPokemonId} />} />          
         <Route path = "/details/:id" element = {<PokemonDetails />} />          
       </Routes>
     </BrowserRouter>
