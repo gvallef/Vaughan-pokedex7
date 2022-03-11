@@ -19,4 +19,5 @@ O que não funciona:
 - Item 4
 
 # Imagem:
-![alt text](https://i.postimg.cc/fLwN8jZk/pokedex.png)
+![Pagina Inicial](https://i.postimg.cc/fLwN8jZk/pokedex.png)
+![Pagina Pokedex](https://i.postimg.cc/BZB6nj80/Pokedex.jpg)
