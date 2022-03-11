@@ -17,3 +17,6 @@ O que funciona:
 O que não funciona: 
 - Item 3
 - Item 4
+
+# Imagem:
+![alt text](https://i.postimg.cc/fLwN8jZk/pokedex.png)
