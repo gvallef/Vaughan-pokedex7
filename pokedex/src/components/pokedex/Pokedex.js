@@ -1,7 +1,6 @@
 import { React, useState } from "react";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
-import "./pokedex.css";
 import "nes.css/css/nes.min.css";
 
 const PokedexBackground = styled.div`
