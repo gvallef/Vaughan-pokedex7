@@ -2,6 +2,9 @@ import { React, useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
 import "nes.css/css/nes.min.css";
+import { useContext } from "react";
+import { GlobalContext } from "../../App";
+import { buildImgUrl, getPokemonId, removeFromPokedex } from "../../functions/functions";
 
 const PokedexBackground = styled.div`
   display: grid;
@@ -32,14 +35,15 @@ const SearchContainer = styled.div`
   margin-top: 10px;
 `;
 
-const Pokedex = (props) => {
+const Pokedex = () => {
   const [search, setSearch] = useState("");
+  const {pokemonlist, setPokemonlist, pokedex, setPokedex} = useContext(GlobalContext)
 
   const handleChange = (e) => {
     setSearch(e.target.value);
   };
 
-  const filteredPokemons = props.pokedex.filter((pokemon) => {
+  const filteredPokemons = pokedex.filter((pokemon) => {
     return pokemon.name.toLowerCase().includes(search.toLowerCase());
   });
 
@@ -74,18 +78,18 @@ const Pokedex = (props) => {
         >
           <h2>{pokemon.name}</h2>
           <PokeImage>
-            <img src={props.buildImgUrl(pokemon.url)} alt={pokemon.name} />
+            <img src={buildImgUrl(pokemon.url)} alt={pokemon.name} />
           </PokeImage>
           <CardButtons>
             <button
               style={{ height: "30px", padding: "0px" }}
               type="button"
               class="nes-btn is-error"
-              onClick={() => props.removeFromPokedex(pokemon)}
+              onClick={() => removeFromPokedex(pokemon, pokemonlist, setPokemonlist, pokedex, setPokedex)}
             >
               Remover
             </button>
-            <Link to={`/details/${props.getPokemonId(pokemon.url)}`}>
+            <Link to={`/details/${getPokemonId(pokemon.url)}`}>
               <button
                 type="button"
                 class="nes-btn is-primary"
