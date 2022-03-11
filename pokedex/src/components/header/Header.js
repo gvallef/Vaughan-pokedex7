@@ -8,7 +8,7 @@ const Header = () => {
   return (
     <HeaderContainer>
       <Link to="/">
-        <Button>Pokemon List</Button>
+        <Button>Pokemons</Button>
       </Link>
       <>
         <img height="60px" src={image} />
