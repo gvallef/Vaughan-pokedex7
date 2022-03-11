@@ -1,11 +1,14 @@
-import { BrowserRouter, Routes, Route } from "react-router-dom";
-import "./App.css";
-import Home from "./components/home/Home";
-import PokemonDetails from "./components/PokemonDetails/PokemonDetails";
-import Header from "./components/header/Header";
-import Pokedex from "./components/pokedex/Pokedex";
-import axios from "axios";
-import { useState, useEffect } from "react";
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import './App.css';
+import Home from './components/home/Home';
+import PokemonDetails from './components/PokemonDetails/PokemonDetails'
+import Header from './components/header/Header';
+import Pokedex from './components/pokedex/Pokedex';
+import axios from 'axios';
+import { useState, useEffect, createContext } from 'react';
+
+export const GlobalContext = createContext()
+// GLOBAL STATE SÓ FOI COLOCADO NO HOME
 
 function App() {
   const [pokemonlist, setPokemonlist] = useState([]);
@@ -57,35 +60,28 @@ function App() {
   };
 
   return (
-    <BrowserRouter>
-      <Header />
-      <Routes>
-        <Route
-          path="/"
-          element={
-            <Home
-              pokemonlist={pokemonlist}
-              buildImgUrl={buildImgUrl}
-              getPokemonId={getPokemonId}
-              addToPokedex={addToPokedex}
-            />
-          }
-        />
-        <Route
-          path="/pokedex"
-          element={
-            <Pokedex
-              buildImgUrl={buildImgUrl}
-              pokedex={pokedex}
-              removeFromPokedex={removeFromPokedex}
-              pokemonlist={pokemonlist}
-              getPokemonId={getPokemonId}
-            />
-          }
-        />
-        <Route path="/details/:id" element={<PokemonDetails />} />
-      </Routes>
-    </BrowserRouter>
+
+    <GlobalContext.Provider value = {{pokemonlist, pokedex}}>
+      <BrowserRouter>
+        <Header />
+        <Routes>
+          <Route path = "/" element = {<Home
+          pokemonlist={pokemonlist}
+          buildImgUrl={buildImgUrl}
+          getPokemonId={getPokemonId}
+          addToPokedex={addToPokedex}
+          />} />
+          <Route path = "/pokedex" element = {<Pokedex 
+          buildImgUrl={buildImgUrl} 
+          pokedex={pokedex}
+          removeFromPokedex={removeFromPokedex}
+          pokemonlist={pokemonlist}
+          getPokemonId={getPokemonId} />} />          
+          <Route path = "/details/:id" element = {<PokemonDetails />} />          
+        </Routes>
+      </BrowserRouter>
+    </GlobalContext.Provider>
+    
   );
 }
 

@@ -1,7 +1,8 @@
-import React from "react";
+import React, { useContext } from "react";
 import styled from "styled-components";
 import { Link } from "react-router-dom";
 import { useEffect, useState } from "react";
+import { GlobalContext } from "../../App";
 
 const PokecardContainer = styled.div`
   display: grid;
@@ -33,15 +34,20 @@ const SearchContainer = styled.div`
 `;
 
 const Home = (props) => {
+
   const [search, setSearch] = useState("");
 
   const handleChange = (e) => {
     setSearch(e.target.value);
   };
 
-  const filteredPokemons = props.pokemonlist.filter((pokemon) => {
+  const filteredPokemons = pokemonlist.filter((pokemon) => {
     return pokemon.name.toLowerCase().includes(search.toLowerCase());
   });
+
+
+  
+  const {pokemonlist} = useContext(GlobalContext)
 
 
   return (
@@ -55,7 +61,6 @@ const Home = (props) => {
       width: "250px",
       height: "50px",
     }}></textarea>
-    {/* <i class="nes-pokeball"></i> */}
     </SearchContainer>
 
     <PokecardContainer>
