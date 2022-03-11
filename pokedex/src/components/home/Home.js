@@ -3,6 +3,8 @@ import styled from "styled-components";
 import { Link } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { GlobalContext } from "../../App";
+import { buildImgUrl, getPokemonId} from "../../functions/functions";
+import { addToPokedex } from "../../functions/functions";
 
 const PokecardContainer = styled.div`
   display: grid;
@@ -33,10 +35,10 @@ const SearchContainer = styled.div`
   margin-top: 10px;
 `;
 
-const Home = (props) => {
+const Home = () => {
 
   const [search, setSearch] = useState("");
-  const {pokemonlist} = useContext(GlobalContext)
+  const {pokemonlist, setPokemonlist, pokedex, setPokedex} = useContext(GlobalContext)
 
   const handleChange = (e) => {
     setSearch(e.target.value);
@@ -77,18 +79,18 @@ const Home = (props) => {
         >
           <h2>{pokemon.name}</h2>
           <PokeImage>
-            <img src={props.buildImgUrl(pokemon.url)} alt={pokemon.name} />
+            <img src={buildImgUrl(pokemon.url)} alt={pokemon.name} />
           </PokeImage>
           <CardButtons>
             <button
               style={{ height: "30px", padding: "0px" }}
               type="button"
               class="nes-btn is-success"
-              onClick={() => props.addToPokedex(pokemon)}
+              onClick={() => addToPokedex(pokemon, pokemonlist, setPokemonlist, pokedex, setPokedex)}
             >
               Adicionar
             </button>
-            <Link to={`/details/${props.getPokemonId(pokemon.url)}`}>
+            <Link to={`/details/${getPokemonId(pokemon.url)}`}>
               <button
                 type="button"
                 class="nes-btn is-primary"
