@@ -36,6 +36,7 @@ const SearchContainer = styled.div`
 const Home = (props) => {
 
   const [search, setSearch] = useState("");
+  const {pokemonlist} = useContext(GlobalContext)
 
   const handleChange = (e) => {
     setSearch(e.target.value);
@@ -44,10 +45,6 @@ const Home = (props) => {
   const filteredPokemons = pokemonlist.filter((pokemon) => {
     return pokemon.name.toLowerCase().includes(search.toLowerCase());
   });
-
-
-  
-  const {pokemonlist} = useContext(GlobalContext)
 
 
   return (

@@ -66,7 +66,7 @@ function App() {
         <Header />
         <Routes>
           <Route path = "/" element = {<Home
-          pokemonlist={pokemonlist}
+          // pokemonlist={pokemonlist}
           buildImgUrl={buildImgUrl}
           getPokemonId={getPokemonId}
           addToPokedex={addToPokedex}
