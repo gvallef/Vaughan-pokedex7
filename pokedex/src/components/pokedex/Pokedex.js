@@ -1,7 +1,6 @@
-import { React, useState } from "react";
+import { React, useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
-import "./pokedex.css";
 import "nes.css/css/nes.min.css";
 
 const PokedexBackground = styled.div`
@@ -24,10 +23,42 @@ const CardButtons = styled.div`
   gap: 5px;
 `;
 
+const SearchContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  margin-top: 10px;
+`;
+
 const Pokedex = (props) => {
+  const [search, setSearch] = useState("");
+
+  const handleChange = (e) => {
+    setSearch(e.target.value);
+  };
+
+  const filteredPokemons = props.pokedex.filter((pokemon) => {
+    return pokemon.name.toLowerCase().includes(search.toLowerCase());
+  });
+
   return (
+    <>
+    <SearchContainer>
+    <textarea onChange={handleChange}  placeholder="Pokemon search" id="textarea_field" class="nes-textarea"
+    style={{
+      backgroundColor: "white",
+      color: "black",
+      fontSize: "15px",
+      width: "250px",
+      height: "50px",
+    }}></textarea>
+    </SearchContainer>
+
     <PokedexBackground>
-      {props.pokedex.map((pokemon) => (
+
+      {filteredPokemons.map((pokemon) => (
         <div
           key={pokemon.id}
           class="nes-container is-rounded"
@@ -67,6 +98,7 @@ const Pokedex = (props) => {
         </div>
       ))}
     </PokedexBackground>
+    </>
   );
 };
 

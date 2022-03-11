@@ -10,14 +10,11 @@ import { useState, useEffect, createContext } from 'react';
 export const GlobalContext = createContext()
 // GLOBAL STATE SÓ FOI COLOCADO NO HOME
 
-
 function App() {
   const [pokemonlist, setPokemonlist] = useState([]);
   const [pokedex, setPokedex] = useState([]);
-  
 
   let limit = 151;
-  
 
   useEffect(() => {
     getPokemons();
@@ -40,29 +37,30 @@ function App() {
     const imgUrl = `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${id[idx]}.png`;
 
     return imgUrl;
-    };
-  
-    const getPokemonId = (url) => {
-      const id = url.split("/");
-      const idx = id.length - 2;
-      const pokemonId = id[idx];
-      return pokemonId;
-    };
+  };
 
-    const addToPokedex = (pokemon) => {
-      setPokedex([...pokedex, pokemon])
-      const newPokemonList = pokemonlist.filter(p => p.name !== pokemon.name);
-      setPokemonlist(newPokemonList);
-    };
+  const getPokemonId = (url) => {
+    const id = url.split("/");
+    const idx = id.length - 2;
+    const pokemonId = id[idx];
+    return pokemonId;
+  };
 
-    const removeFromPokedex = (pokemon) => {
-      const newPokedex = pokedex.filter(p => p.name !== pokemon.name);
-      setPokedex(newPokedex);
-      const newPokemonList = [...pokemonlist, pokemon];
-      setPokemonlist(newPokemonList);
-    };
+  const addToPokedex = (pokemon) => {
+    setPokedex([...pokedex, pokemon]);
+    const newPokemonList = pokemonlist.filter((p) => p.name !== pokemon.name);
+    setPokemonlist(newPokemonList);
+  };
+
+  const removeFromPokedex = (pokemon) => {
+    const newPokedex = pokedex.filter((p) => p.name !== pokemon.name);
+    setPokedex(newPokedex);
+    const newPokemonList = [...pokemonlist, pokemon];
+    setPokemonlist(newPokemonList);
+  };
 
   return (
+
     <GlobalContext.Provider value = {{pokemonlist, pokedex}}>
       <BrowserRouter>
         <Header />

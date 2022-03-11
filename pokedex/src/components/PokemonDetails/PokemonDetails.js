@@ -11,14 +11,12 @@ const Root = styled.div`
   justify-content: center;
 `;
 
-const InfoCard = styled.div`
+const DivDoMeio = styled.div`
   display: flex;
   flex-direction: column;
-  border: 1px solid black;
+  gap: 50px;
+  align-items: center;
 `;
-const divDoMeio = styled.div``;
-
-const ImagemPokemon = styled.img``;
 
 const PokemonDetails = () => {
   const { id } = useParams();
@@ -80,53 +78,48 @@ const PokemonDetails = () => {
 
   const pokemap = pokemons.map((poke) => (
     <Root>
-      <InfoCard
+      <div
+        class="nes-container is-rounded"
         key={poke.name}
         style={{
           backgroundColor: backgroundType(poke.types[0].type.name),
           color: "white",
+          display: "flex",
+          flexDirection: "column",
+          gap: "10px",
         }}
       >
-        <h3>Status</h3>
-        {/* show pokemon stats */}
-        <div>
-          
-          <b class="nes-text is-normal">HP: </b>
-          {poke.stats[0].base_stat}
-          <progress class="" value={poke.stats[0].base_stat} max="100"></progress>
-        </div>
-        <div>
-          
-          <b class="nes-text is-normal">Attack: </b> {poke.stats[1].base_stat}
-          <progress class="" value={poke.stats[1].base_stat} max="100"></progress>
-        </div>
-        <div>
-          
-          <b class="nes-text is-normal">Defense: </b> {poke.stats[2].base_stat}
-          <progress class="" value={poke.stats[2].base_stat} max="100"></progress>
-        </div>
-        <div>
-          
-          <b class="nes-text is-normal">Special-attack: </b> 
-          
-          {poke.stats[3].base_stat}
-          <progress class="" value={poke.stats[3].base_stat} max="100"></progress>
-        </div>
-        <div>
-          
-          <b class="nes-text is-normal">Special-defense: </b>
-          {poke.stats[4].base_stat}
-          <progress class="" value={poke.stats[4].base_stat} max="100"></progress>
-        </div>
-        <div>
-          
-          <b class="nes-text is-normal">Speed: </b> {poke.stats[5].base_stat}
-          <progress class="" value={poke.stats[5].base_stat} max="100"></progress>
-        </div>
-      </InfoCard>
+        <h3>Status:</h3>
 
-      <divDoMeio>
-        <InfoCard
+        <b class="nes-text is-normal">HP:{poke.stats[0].base_stat}</b>
+
+        <progress class="" value={poke.stats[0].base_stat} max="100"></progress>
+
+        <b class="nes-text is-normal">Attack:{poke.stats[1].base_stat}</b>
+        <progress class="" value={poke.stats[1].base_stat} max="100"></progress>
+
+        <b class="nes-text is-normal">Defense:{poke.stats[2].base_stat}</b>
+        <progress class="" value={poke.stats[2].base_stat} max="100"></progress>
+
+        <b class="nes-text is-normal">
+          Special-attack:{poke.stats[3].base_stat}
+        </b>
+
+        <progress class="" value={poke.stats[3].base_stat} max="100"></progress>
+
+        <b class="nes-text is-normal">
+          Special-defense:{poke.stats[4].base_stat}
+        </b>
+
+        <progress class="" value={poke.stats[4].base_stat} max="100"></progress>
+
+        <b class="nes-text is-normal">Speed:{poke.stats[5].base_stat}</b>
+        <progress class="" value={poke.stats[5].base_stat} max="100"></progress>
+      </div>
+
+      <DivDoMeio>
+        <div
+          class="nes-container is-rounded"
           key={poke.name}
           style={{
             backgroundColor: backgroundType(poke.types[0].type.name),
@@ -137,43 +130,34 @@ const PokemonDetails = () => {
 
           <p>Tipo 1: {poke.types[0].type.name}</p>
           <p>Tipo 2: {poke.types[1] ? poke.types[1].type.name : "N/A"}</p>
-        </InfoCard>
-
-        <InfoCard
+        </div>
+        <div
+          class="nes-container is-rounded"
           key={poke.name}
           style={{
             backgroundColor: backgroundType(poke.types[0].type.name),
             color: "white",
           }}
         >
-          <img src={poke.sprites.back_default} />
-        </InfoCard>
-
-        <InfoCard
-          key={poke.name}
-          style={{
-            backgroundColor: backgroundType(poke.types[0].type.name),
-            color: "white",
-          }}
-        >
-          <img src={poke.sprites.front_default} />
-        </InfoCard>
-      </divDoMeio>
-      <InfoCard
+          <img height="200px" src={poke.sprites.front_default} />
+          <img height="200px" src={poke.sprites.back_default} />
+        </div>
+      </DivDoMeio>
+      <div
+        class="nes-container is-rounded"
         key={poke.name}
         style={{
           backgroundColor: backgroundType(poke.types[0].type.name),
           color: "white",
         }}
       >
-        movimentos
-        {/* show pokemon moves */}
+        <h3>Movimentos:</h3>
         <p>{poke.moves[0].move.name}</p>
         <p>{poke.moves[1] ? poke.moves[1].move.name : "N/A"}</p>
         <p>{poke.moves[2] ? poke.moves[2].move.name : "N/A"}</p>
         <p>{poke.moves[3] ? poke.moves[3].move.name : "N/A"}</p>
         <p>{poke.moves[4] ? poke.moves[4].move.name : "N/A"}</p>
-      </InfoCard>
+      </div>
     </Root>
   ));
 
