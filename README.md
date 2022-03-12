@@ -6,7 +6,7 @@ Nome dos integrantes:
 - Filipe
 - Jardel
 - Anderson
-- Gabriel
+- Gabriel Valle da Costa Ferreira
 
 
 O que funciona:
