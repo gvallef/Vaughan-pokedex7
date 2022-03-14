@@ -4,7 +4,7 @@
 
 Nome dos integrantes: 
 - Filipe Dias Correia
-- Jardel Santos
+- Jardel Dos Santos Nepomuceno
 - Anderson Felix
 - Gabriel Valle da Costa Ferreira
 
