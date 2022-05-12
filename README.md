@@ -41,7 +41,7 @@ Agradecemos às seguintes pessoas que contribuíram para este projeto:
 <table>
   <tr>
     <td align="center">
-      <a href="#">
+      <a href="https://github.com/FillipeCO">
         <img src="https://avatars.githubusercontent.com/u/87552890?v=4" width="100px;" alt="Foto do Fillipe no GitHub"/><br>
         <sub>
           <b>Fillipe Dias</b>
@@ -49,24 +49,24 @@ Agradecemos às seguintes pessoas que contribuíram para este projeto:
       </a>
     </td>
     <td align="center">
-      <a href="#">
-        <img src="https://avatars.githubusercontent.com/u/94788717?v=4" width="100px;" alt="Foto do ANderson"/><br>
+      <a href="https://github.com/Anderson-Felix-de-Lyra">
+        <img src="https://avatars.githubusercontent.com/u/94788717?v=4" width="100px;" alt="Foto do Anderson no GitHub"/><br>
         <sub>
           <b>Anderson Felix</b>
         </sub>
       </a>
     </td>
     <td align="center">
-      <a href="#">
-        <img src="https://avatars.githubusercontent.com/u/59378360?v=4" width="100px;" alt="foto gabriel github"/><br>
+      <a href="https://github.com/gvallef">
+        <img src="https://avatars.githubusercontent.com/u/59378360?v=4" width="100px;" alt="Foto do Gabriel no GitHub"/><br>
         <sub>
           <b>Gabriel Ferreira</b>
         </sub>
       </a>
     </td>
     <td align="center">
-      <a href="#">
-        <img src="https://avatars.githubusercontent.com/u/86195881?v=4" width="100px;" alt="foto jardel github"/><br>
+      <a href="https://github.com/jardell13">
+        <img src="https://avatars.githubusercontent.com/u/86195881?v=4" width="100px;" alt="Foto do Jardel no GitHub"/><br>
         <sub>
           <b>Jardel Santos</b>
         </sub>
