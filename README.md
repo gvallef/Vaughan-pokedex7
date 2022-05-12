@@ -10,7 +10,7 @@ Nome dos integrantes:
 
 <img src="https://i.postimg.cc/fLwN8jZk/pokedex.png" alt="imagem principal">
 
-# Imagems:
+# Imagens:
 ![Pagina Detalhes 1](https://i.postimg.cc/cLrw3RYY/Detalhes.jpg)
 ![Pagina Detalhes 2](https://i.postimg.cc/x1hH3XyZ/Detalhes2.jpg)
 
